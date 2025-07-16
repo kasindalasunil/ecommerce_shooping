@@ -112,6 +112,7 @@ const getproduct = async (req, res) => {
     const { page = 2, limit = 10, brand, stock, price} = req.query;
 
     const skip = (page - 1) * limit;
+    // created a fileobj to filter 
     const fileObj = {};
 
     if (brand) {

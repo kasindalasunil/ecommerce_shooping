@@ -1,9 +1,9 @@
 const express =  require('express')
-// const router = require('../src/routes/route')
 const productrouter = require('../src/routes/productRoutes');
 const upload = require('../src/middleware/authmiddleware');
 const cartrouter = require('../src/routes/cartRoutes');
-
+const userrouter = require('../src/routes/userroute');
+const verifyToken = require('../src/middleware/authorization');
 
 
 const app  = express();
@@ -17,11 +17,14 @@ app.use('/uploads', express.static('uploads'))
 // app.get('/', (req,res)=>{
 //     res.send("API is working fine !");
 // });
-app.use('/product',upload.any(), productrouter);
-// app.use('/', productrouter);
-app.use('/product',productrouter);
+app.use(upload.any());
 
-app.use('/product',productrouter);
+app.use('/api/product',productrouter);
+
+app.use('/api/cart',verifyToken,cartrouter);
+
+app.use('/api/user',userrouter);
+
 
 
 module.exports = app;

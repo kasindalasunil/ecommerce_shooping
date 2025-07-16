@@ -4,19 +4,21 @@ const {register,loginapi,getuser,updateuser} = require('../controllers/usercontr
 // const upload = require('../middleware/authmiddleware');
 
 
-const router = express.Router();
+const userrouter = express.Router();
 
-router.post('/signup', register);
-router.post('/login',loginapi);
-router.get('/user',getuser);
+userrouter.post('/', register);
+userrouter.post('/login',loginapi);
+
+userrouter.get('/get',getuser);
+
 
 
 
 // router.post('/createproduct/:id', upload.any(), createproduct)
 
-router.put('/update/:id',updateuser);
+userrouter.put('/update/:id', updateuser);
 
 
 
 
-module.exports = router;
+module.exports = userrouter;
