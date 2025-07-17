@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const paymentEnum = ["UPI", "CARD", "COD"];
 const orderEnum = ["proceesing", "shipped", "delivered", "cancelled"];
+const paymentstatusEnum = ["processing","successfull","failed"];
 
 const orderSchema = new mongoose.Schema(
   {
@@ -16,16 +17,17 @@ const orderSchema = new mongoose.Schema(
           ref: "product",
           required: true,
         },
-        quantity: { type: String },
+       quantity : { type: String },
         price_at_purchase: { type: Number },
       },
     ],
     total_summary: { type: Number },
     payment_method: { type: paymentEnum, required: true },
     order_status: { type: orderEnum, required: true },
+    payment_status:{type:paymentstatusEnum,required:true}
   },
   {
-    Timestamp: true,
+    timestamps: true,
   }
 );
 const order = mongoose.model("order", orderSchema);

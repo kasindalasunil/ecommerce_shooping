@@ -3,6 +3,8 @@ const productrouter = require('../src/routes/productRoutes');
 const upload = require('../src/middleware/authmiddleware');
 const cartrouter = require('../src/routes/cartRoutes');
 const userrouter = require('../src/routes/userroute');
+const orderrouter = require('../src/routes/orderRoute');
+
 const verifyToken = require('../src/middleware/authorization');
 
 
@@ -24,6 +26,9 @@ app.use('/api/product',productrouter);
 app.use('/api/cart',verifyToken,cartrouter);
 
 app.use('/api/user',userrouter);
+
+app.use('/api/order',verifyToken,orderrouter);
+
 
 
 
