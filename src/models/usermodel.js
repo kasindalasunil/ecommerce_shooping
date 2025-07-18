@@ -20,7 +20,7 @@ const userSchema = new mongoose.Schema({
       address_type: { type: addressEnum, default: "home", required: true },
     },
   ],
-  role: { type: roleEnum, required: true, default: "user" },
+  role: { type: String, enum: roleEnum, required: true, default: "user" },
 });
-const User = mongoose.model("User", userSchema);
-module.exports = User;
+
+module.exports = mongoose.model("User", userSchema);

@@ -7,7 +7,6 @@ const orderrouter = require('../src/routes/orderRoute');
 
 const verifyToken = require('../src/middleware/authorization');
 
-
 const app  = express();
 
 // app.use(upload.any());
@@ -21,14 +20,13 @@ app.use('/uploads', express.static('uploads'))
 // });
 app.use(upload.any());
 
-app.use('/api/product',productrouter);
+app.use('/api/product', productrouter);
 
 app.use('/api/cart',verifyToken,cartrouter);
 
 app.use('/api/user',userrouter);
 
 app.use('/api/order',verifyToken,orderrouter);
-
 
 
 

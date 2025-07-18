@@ -60,7 +60,8 @@ const loginapi = async(req,res)=>{
         }
         const secretkey = "abc"
         const token = jwt.sign({
-            id : user._id,
+            id : user.id,
+            role: user.role,
             username : 'GFG'
         },
             secretkey,{expiresIn:'1h'});

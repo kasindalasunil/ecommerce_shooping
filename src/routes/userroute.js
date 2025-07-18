@@ -6,7 +6,7 @@ const {register,loginapi,getuser,updateuser} = require('../controllers/usercontr
 
 const userrouter = express.Router();
 
-userrouter.post('/', register);
+userrouter.post('/register', register);
 userrouter.post('/login',loginapi);
 
 userrouter.get('/get',getuser);

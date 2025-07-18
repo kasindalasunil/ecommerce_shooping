@@ -12,6 +12,11 @@ const productSchema = new mongoose.Schema(
     image: { type: String },
     image_urls: [{ type: String }],
     rating: { type: String },
+    created_by : {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "user",
+      required: true
+    }
   },
   {
     timestamps: true,
